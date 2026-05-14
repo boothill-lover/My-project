@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4288734628816620516}
   - component: {fileID: 960144012262757703}
   - component: {fileID: 9120550013654745335}
+  - component: {fileID: 7239260934599871790}
   m_Layer: 0
   m_Name: SugoiCylinder 1
   m_TagString: Collectible
@@ -169,7 +170,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!114 &9120550013654745335
 MonoBehaviour:
@@ -183,6 +184,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53843873410a5f43afcc0f8c9088d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionScript
+--- !u!114 &7239260934599871790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529750368567110540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79698ed8bd012642aaf2f488459ae7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collectible
+  score: 20
 --- !u!1 &2894979336758033232
 GameObject:
   m_ObjectHideFlags: 0

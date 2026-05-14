@@ -6,13 +6,13 @@ public class Completion : MonoBehaviour
     {
         if(other.gameObject.name == "PlayerCapsule")
         {
-            if(GameManager.collected == GameManager.collectibles)
+            if(GameManager.totalScore >= GameManager.totalPossibleScore)
             {
                 print("Complete");
             }
             else
             {
-                print("Collect all items first!");
+                print("Collect all items first! Current score: " + GameManager.totalScore + "/" + GameManager.totalPossibleScore);
             }
         }
     }
