@@ -3,9 +3,14 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     GameObject currentCollectible;
+    AudioSource collectibleAudio;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    GameObject currentDoor;
+    Door currentDoorScript;
     void Start()
     {
+        collectibleAudio = GetComponent<AudioSource>();
     }
      void OnTriggerEnter(Collider other)
     {
@@ -13,7 +18,16 @@ public class playerScript : MonoBehaviour
         {
             currentCollectible = other.gameObject;
         }
+        
+        Door door = other.GetComponentInParent<Door>();
+
+        if(door != null)
+        {
+            currentDoor = other.gameObject;
+            currentDoorScript = door;
+        }
     }
+
     void OnInteract()
         {
             if(currentCollectible != null)
@@ -23,8 +37,15 @@ public class playerScript : MonoBehaviour
                 {
                     GameManager.totalScore += collectible.score;
                     print("Collected: " + collectible.score + " points. Total score: " + GameManager.totalScore);
+                    collectible.Collect();
+                    currentCollectible = null;
                 }
-                Destroy(currentCollectible);
+                
+            }
+
+            if(currentDoorScript != null)
+            {
+                currentDoorScript.Interact();
             }
         }
     void OnTriggerExit(Collider other)
@@ -32,6 +53,12 @@ public class playerScript : MonoBehaviour
         if(other.gameObject == currentCollectible)
         {
             currentCollectible = null;
+        }
+
+        if(other.gameObject == currentDoor)
+        {
+            currentDoor = null;
+            currentDoorScript = null;
         }
     }
 }
